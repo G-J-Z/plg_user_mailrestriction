@@ -44,7 +44,7 @@ class plgUserMailRestriction extends JPlugin {
 		$email = trim($new['email']);
 		list(,$domain) = explode('@', strtolower($email));
 
-		if (in_array($email, $emails) || in_array($domain, $domains)) {
+		if (in_array($email, $emails) || !in_array($domain, $domains)) {
 			JFactory::getApplication()->enqueueMessage(JText::_('PLG_USER_MAILRESTRICTION_DENY'), 'error');
 			JFactory::getApplication()->redirect(JRoute::_('index.php?option=com_users&view=registration'));
 		}
